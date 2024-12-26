@@ -147,7 +147,7 @@ const Dashboard = ({ handleLogout, user, userRepositories, accessToken }) => {
                                 key={text}
                                 onClick={() =>
                                     handleSectionClick(
-                                        `show${text.replace(/\s/g,'')}` // Converts "Code Review" to "showAICodeReview"
+                                        `show${text.replace(/\s/g, '')}` // Converts "Code Review" to "showAICodeReview"
                                     )
                                 }
                                 sx={{
@@ -233,7 +233,7 @@ const Dashboard = ({ handleLogout, user, userRepositories, accessToken }) => {
 
             {/* show code review */}
             {showSection.showAICodeReview && (
-                 <Card sx={{
+                <Card sx={{
                     width: "100%",
                     bgcolor: "background.paper",
                     padding: "20px",
