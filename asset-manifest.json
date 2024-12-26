@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/rhythm199/CodeAnt-AI.git/static/css/main.f855e6bc.css",
+    "main.js": "/rhythm199/CodeAnt-AI.git/static/js/main.61519bc1.js",
+    "static/media/side.png": "/rhythm199/CodeAnt-AI.git/static/media/side.831348dd3ff8daccc630.png",
+    "index.html": "/rhythm199/CodeAnt-AI.git/index.html",
+    "main.f855e6bc.css.map": "/rhythm199/CodeAnt-AI.git/static/css/main.f855e6bc.css.map",
+    "main.61519bc1.js.map": "/rhythm199/CodeAnt-AI.git/static/js/main.61519bc1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.61519bc1.js"
+  ]
+}
