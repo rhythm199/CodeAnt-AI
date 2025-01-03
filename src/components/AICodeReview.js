@@ -19,7 +19,7 @@ const AICodeReview = () => {
                 Objective
             </Typography>
             <Typography variant="body1" align="left" color="textSecondary" sx={{ marginBottom: 1 }}>
-                To evaluate candidates' ability to code and deliver a functional frontend implementation based on a provided design.
+                To evaluate candidates ability to code and deliver a functional frontend implementation based on a provided design.
             </Typography>
 
             <Typography variant="h6" align="left" sx={{ fontWeight: "bold", marginBottom: 1 }}>

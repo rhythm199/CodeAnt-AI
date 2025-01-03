@@ -1,5 +1,5 @@
-// import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import CodeAntAI from './components/CodeAntAI';
 import Dashboard from './components/Dashboard';
@@ -27,11 +27,17 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (
+      <BrowserRouter basename="/CodeAnt-AI">
+        <Routes>
+          <Route index path="/" element={<CodeAntAI />} />
+          <Route path="/dashboard" element={<Dashboard user="rhythm199" />} />
+        </Routes>
+      </BrowserRouter>
+      {/* {user ? (
         <Dashboard handleLogout={signOutUser} user={user?.email} userRepositories={repos} accessToken={accessToken} />
       ) : (
         <CodeAntAI handleLogin={handleLogin} />
-      )}
+      )} */}
     </div>
   );
 }

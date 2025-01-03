@@ -45,7 +45,7 @@ export const signOutUser = async () => {
     try {
         await signOut(auth);
 
-        window.location.href = '/CodeAnt-AI/';
+        window.location.href = '/';
     } catch (error) {
         console.error('Error during sign-out:', error);
     }

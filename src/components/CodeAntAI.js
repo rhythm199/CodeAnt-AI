@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button, Card, CssBaseline, Grid, Typography } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 import Tabs from "@mui/joy/Tabs";
 import Tab, { tabClasses } from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
@@ -66,6 +67,7 @@ const useStyles = makeStyles({
 
 const CodeAntAI = ({ handleLogin }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [index, setIndex] = React.useState(0);
   const colors = ["primary", "primary"];
   const isMobile = useMediaQuery("(max-width:600px)");
@@ -160,7 +162,8 @@ const CodeAntAI = ({ handleLogin }) => {
               <div className={classes.tabPanel}>
                 <div className={classes.buttons}>
                   <Button
-                    onClick={handleLogin}
+                    // onClick={handleLogin}
+                    onClick={() => navigate('/dashboard')}
                     style={{
                       border: "1px solid #d3d3d3", // Light grey border
                       color: "#333",

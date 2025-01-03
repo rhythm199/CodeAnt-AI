@@ -6,7 +6,6 @@ import {
     Chip,
     LinearProgress,
     Divider,
-    Grid,
     IconButton,
     InputBase,
     List,
@@ -14,25 +13,23 @@ import {
     ListItemText,
     Paper,
     Typography,
+    CardContent,
 } from "@mui/material";
-import styled from '@mui/system/styled';
 import { Search } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
 import CachedIcon from "@mui/icons-material/Cached";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
+import { useMediaQuery } from "@mui/material";
 import { fetchGitHubRepositories } from "../context/userContext";
 
 import { formatDistanceToNow } from 'date-fns';
 
 const Repositories = ({ accessToken, userRepositories }) => {
+    const isMobile = useMediaQuery("(max-width:600px)");
     const [isLoading, setIsLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState(userRepositories);
-    const Item = styled('div')(({ theme }) => ({
-        color: "black",
-        padding: theme.spacing(3),
-    }));
 
     useEffect(() => {
         setResults(userRepositories);
@@ -49,11 +46,11 @@ const Repositories = ({ accessToken, userRepositories }) => {
     }
 
     //refresh all
-    const handleRefreshAll = async (accessToken) => {
+    const handleRefreshAll = async() => {
         setIsLoading(true);
         try {
-            const repositories = await fetchGitHubRepositories(accessToken);
-            setResults(repositories);
+            // const repositories = await fetchGitHubRepositories(accessToken);
+            setResults(userRepositories);
         } catch (error) {
             console.error("Error refreshing repositories:", error.message);
         } finally {
@@ -69,68 +66,36 @@ const Repositories = ({ accessToken, userRepositories }) => {
             bgcolor: "background.paper",
             backgroundColor: "#fff",
             borderRadius: "8px",
-            boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-            margin: "20px",
+            boxShadow: isMobile ? 0 : "0px 4px 10px rgba(0,0,0,0.1)",
+            margin: isMobile ? 0 : "20px",
         }}>
-            <List sx={{ padding: "10px" }}>
-                <ListItem alignItems="flex-start">
-                    <ListItemText
-                        primary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="h5"
-                                    gutterBottom
-                                    sx={{
-                                        color: "text.primary",
-                                        fontWeight: "bold",
-                                        display: "inline",
-                                    }}
-                                >
-                                    Repositories
-                                </Typography>
-                            </React.Fragment>
-                        }
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="subtitle1"
-                                    gutterBottom
-                                    sx={{ color: "text.primary", display: "flex", mb: 2 }}
-                                >
-                                    {results?.length} total repositories
-                                </Typography>
-                                <Paper
-                                    component="form"
-                                    sx={{ p: '2px 4px', display: 'flex', border: "1px solid lightGrey", alignItems: 'center', width: 400, mb: "5px" }}
-                                >
-                                    <IconButton onClick={handleSearch} type="button" aria-label="search">
-                                        <Search />
-                                    </IconButton>
-                                    <InputBase
-                                        sx={{ ml: 1, }}
-                                        value={searchTerm}
-                                        onChange={handleSearchTerm}
-                                        placeholder="Search Repositories"
-                                        variant="outlined"
-                                    />
-                                </Paper>
-                            </React.Fragment>
-                        }
-                    />
-                    <Box
+            <CardContent >
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: "10px",
+                        flexDirection: isMobile ? "column" : "row",
+                        justifyContent: isMobile ? "flex-start" : "space-between",
+                    }}
+                >
+                    <Typography
+                        component="span"
+                        variant="h5"
                         sx={{
-                            mt: 2,
+                            color: "text.primary",
+                            fontWeight: "bold",
                             display: "flex",
-                            justifyContent: "space-between",
-                            gap: "10px",
                         }}
                     >
+                        Repositories
+                    </Typography>
+
+                    <Box sx={{
+                        display: "flex", flexDirection: "row", gap: "10px" }} >
                         <Button
-                            onClick={() => handleRefreshAll(accessToken)}
+                            onClick={() => handleRefreshAll()}
                             disabled={isLoading}
-                            sx={{ textTransform: "none", borderRadius: "8px" }}
+                            sx={{ textTransform: "none", borderRadius: "8px", color: "black", borderColor: "lightGrey"}}
                             startIcon={<CachedIcon />}
                             variant="outlined"
                         >
@@ -144,10 +109,33 @@ const Repositories = ({ accessToken, userRepositories }) => {
                             Add Repository
                         </Button>
                     </Box>
-                </ListItem>
-
-                <Divider component="li" />
-
+                </Box>
+                <Typography
+                    component="span"
+                    variant="subtitle1"
+                    gutterBottom
+                    sx={{ color: "text.primary", display: "flex", mb: 1 }}
+                >
+                    {results?.length} total repositories
+                </Typography>
+                <Paper
+                    component="form"
+                    sx={{ p: '2px 2px', display: 'flex', border: "1px solid lightGrey", alignItems: 'center', borderRadius: "8px", width: isMobile ? "90%" : 400, mb: "5px" }}
+                >
+                    <IconButton onClick={handleSearch} type="button" aria-label="search">
+                        <Search />
+                    </IconButton>
+                    <InputBase
+                        sx={{ ml: 1, }}
+                        value={searchTerm}
+                        onChange={handleSearchTerm}
+                        placeholder="Search Repositories"
+                        variant="outlined"
+                    />
+                </Paper>
+            </CardContent>
+            <Divider />
+            <List sx={{ padding: "10px" }}>
                 {isLoading ?
                     <Box sx={{ width: '100%' }}>
                         <LinearProgress />
@@ -157,29 +145,22 @@ const Repositories = ({ accessToken, userRepositories }) => {
                                 <ListItem button alignItems="flex-start" key={repo.name}>
                                     <ListItemText
                                         primary={
-                                            <React.Fragment>
-                                                <Typography variant="h6" gutterBottom>
-                                                    {repo.name}{" "}
-                                                    <Chip label={repo.visibility} color="primary" variant="outlined" size="small" sx={{ ml: 1, backgroundColor: "#e1e9f2", }} />
-                                                </Typography>
-                                            </React.Fragment>
+                                            <Typography component="h5" variant="h5" gutterBottom>
+                                                {repo.name}{" "}
+                                                <Chip label={repo.type} color="primary" variant="outlined" size="small" sx={{ ml: 1, backgroundColor: "#e1e9f2", }} />
+                                            </Typography>
                                         }
                                         secondary={
-                                            <React.Fragment>
-                                                <Box sx={{ flexGrow: 1 }}>
-                                                    <Grid container spacing={3} fontSize="medium">
-                                                        <Grid size={4}>
-                                                            <Item>{repo.language} <FiberManualRecordIcon color="primary" fontSize="small" sx={{ paddingTop: "8px" }} /></Item>
-                                                        </Grid>
-                                                        <Grid size={4}>
-                                                            <Item><StorageOutlinedIcon fontSize="small" sx={{ paddingTop: "8px" }} />{` ${repo.size} KB`}</Item>
-                                                        </Grid>
-                                                        <Grid size={4}>
-                                                            <Item sx={{ paddingTop: "28px" }}>{`Updated ${formatDistanceToNow(new Date(repo.updated_at), { addSuffix: true })}`}</Item>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Box>
-                                            </React.Fragment>
+                                            <Box sx={{ display: "flex", color: "text.primary", alignItems: "center", gap: "40px", mb: 1 }}>
+                                                <Typography variant="subtitle1">
+                                                    {repo.language} <FiberManualRecordIcon fontSize="small" sx={{ color: "#007bff", paddingTop: "10px" }} />
+                                                </Typography>
+                                                <Typography variant="subtitle1">
+                                                    <StorageOutlinedIcon fontSize="small" sx={{ verticalAlign: "middle", marginRight: "4px" }} />
+                                                    {`${repo.size} KB`}
+                                                </Typography>
+                                                <Typography variant="subtitle1">{`Updated ${repo.updated}`}</Typography>
+                                            </Box>
                                         }
                                     />
                                 </ListItem>

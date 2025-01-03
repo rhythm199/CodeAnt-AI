@@ -16,6 +16,7 @@
     "firebase": "^11.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
@@ -24,7 +25,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint .",
+    "test:lint": "npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -45,9 +48,13 @@
     ]
   },
   "devDependencies": {
+    "@eslint/js": "^9.17.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.3",
     "gh-pages": "^6.2.0",
+    "globals": "^15.14.0",
     "loader-utils": "^3.3.1"
   }
 }

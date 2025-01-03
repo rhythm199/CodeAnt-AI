@@ -1,73 +1,57 @@
-# CodeAnt-AI
-A fully coded frontend implementation of the design provided in the Frontend Developer Hiring Assignment. The implementation should use ReactJS, HTML, and CSS, adhering to best practices for clean, maintainable, and scalable code
+# CodeAnt-AI 🚀
 
-## Getting Started with Create React App
+## Overview 📝
+A fully coded frontend implementation of the design provided in the Frontend Developer Hiring Assignment. The implementation should use ReactJS, HTML, and CSS, adhering to best practices for clean, maintainable, and scalable code.
+![Screenshot from 2024-12-20 11-16-35](https://github.com/user-attachments/assets/ce76d024-11bf-44d3-a455-28ef682682d8)
+![Screenshot from 2024-12-22 20-12-58](https://github.com/user-attachments/assets/b69244b2-fc67-4907-9115-4200a558c985)
+![Screenshot from 2024-12-24 01-11-42](https://github.com/user-attachments/assets/f2bbd154-419c-411a-8088-548f092a9927)
+![Screenshot from 2024-12-24 01-11-59](https://github.com/user-attachments/assets/3258dafc-ba63-4c25-81b7-6cbc41307d78)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Features ⚙️
+- **AI Code Review**: Leverage AI to analyze and review code quality, highlighting potential issues, inefficiencies, and improvements.
+- **Repositories Management**: Connect and manage repositories for seamless integration and code analysis.
+- **Cloud Security**: Enhance the security of your code by using AI-driven security analysis.
+- **How-to Guides**: Easily access guides and documentation to make the most of the application.
+- **Settings**: Customize and configure CodeAnt AI based on your needs.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Technologies Used 🛠️
+- **HTML**
+- **CSS** 
+- **JavaScript** 
+- **Material UI**  
+- **React** 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to Use 📖
+- **Login to CodeAnt AI**: Use your credentials to access the dashboard.
+- **Connect your repositories**: Integrate your GitHub or Bitbucket repositories to get started with AI-driven code analysis.
+- **Review and manage code**: Start analyzing your code for potential errors, inefficiencies, and vulnerabilities using the AI-powered insights.
+- **Cloud Security**: View and fix security issues detected by the system in real-time.
+- **Customizable Settings**: Adjust various settings for personalized code review.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contributing 🤝
 
-### `npm run build`
+- Fork the repository
+- Create a new branch (git checkout -b feature-name)
+- Commit your changes (git commit -am 'Add new feature')
+- Push to the branch (git push origin feature-name)
+- Create a new Pull Request
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Assignment Context 🎯
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was given as an assignment by a company to test web development skills in HTML, CSS, and JavaScript, React. The requirement was to To evaluate candidates ability to code and deliver a functional frontend implementation based on a provided design. [Frontend Developer – CodeAnt Figma Design](https://www.figma.com/design/3j3bEI8nR1T1UwsfEBMbhi/Frontend-Developer-%3C%3E-CodeAnt?node-id=0-1&p=f&t=o4y30qjsaZoBc2rs-0)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License 📄
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open-source and available for modification and distribution under the **MIT License**.
