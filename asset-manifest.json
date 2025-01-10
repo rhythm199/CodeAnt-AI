@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/CodeAnt-AI/static/css/main.f855e6bc.css",
-    "main.js": "/CodeAnt-AI/static/js/main.96b005eb.js",
+    "main.js": "/CodeAnt-AI/static/js/main.caa4a293.js",
     "static/media/side.png": "/CodeAnt-AI/static/media/side.831348dd3ff8daccc630.png",
     "index.html": "/CodeAnt-AI/index.html",
     "main.f855e6bc.css.map": "/CodeAnt-AI/static/css/main.f855e6bc.css.map",
-    "main.96b005eb.js.map": "/CodeAnt-AI/static/js/main.96b005eb.js.map"
+    "main.caa4a293.js.map": "/CodeAnt-AI/static/js/main.caa4a293.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.96b005eb.js"
+    "static/js/main.caa4a293.js"
   ]
 }
