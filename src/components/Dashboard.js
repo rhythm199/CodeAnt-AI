@@ -16,21 +16,25 @@ import {
     IconButton,
     useMediaQuery,
 } from "@mui/material";
+import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
+import { ExitToApp, Phone } from "@mui/icons-material";
+import AICodeReview from "./AICodeReview";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CodeOffOutlinedIcon from "@mui/icons-material/CodeOffOutlined";
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
 import CloseIcon from '@mui/icons-material/Close';
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import HowtoUse from './HowtoUse';
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Phone, ExitToApp } from "@mui/icons-material";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import AICodeReview from "./AICodeReview";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import HowtoUse from './HowtoUse';
 import Repositories from './Repositories';
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import Support from './Support';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
 
 const drawerWidth = 240;
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -52,6 +56,7 @@ const Dashboard = ({ user, accessToken }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedProfile, setSelectedProfile] = useState(user);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const { isDarkMode, toggleTheme } = useTheme();
     const isMobile = useMediaQuery("(max-width:600px)");
 
     const handleDrawerToggle = () => {
@@ -103,11 +108,20 @@ const Dashboard = ({ user, accessToken }) => {
                 <Typography variant="h5">
                     <img
                         style={{ width: "2.5rem", paddingRight: "10px" }}
-                        src="https://media.licdn.com/dms/image/v2/D560BAQGncbvGj9h-YA/company-logo_200_200/company-logo_200_200/0/1700642866542/codeant_ai_logo?e=2147483647&v=beta&t=n7FJ33btckE3cs83Lg38lOnUKRwOKkAyeCv8sE-Nkww"
+                        src="./codeant_ai_logo.jpeg"
                         alt="codeAnt-logo"
                     />CodeAnt AI</Typography>
                 <DrawerHeader>
-                    <IconButton onClick={handleDrawerToggle}>
+                    <IconButton
+                        sx={{
+
+                            borderColor: isDarkMode ? "#1e293b" : "#d1d1d1", // Light color for the outline
+                            color: isDarkMode ? "#fff" : "#000",
+                            "&:hover": {
+                                borderColor: "#b0b0b0",
+                            },
+                        }}
+                        onClick={handleDrawerToggle}>
                         <CloseIcon />
                     </IconButton>
                 </DrawerHeader>
@@ -123,8 +137,8 @@ const Dashboard = ({ user, accessToken }) => {
                     borderRadius: 2,
                     margin: "20px",
                     padding: "8px",
-                    borderColor: "#d1d1d1",
-                    color: "#000",
+                    borderColor: isDarkMode ? "#1e293b" : "#d1d1d1", // Light color for the outline
+                    color: isDarkMode ? "#fff" : "#000",
                     "&:hover": {
                         borderColor: "#b0b0b0",
                     },
@@ -206,17 +220,29 @@ const Dashboard = ({ user, accessToken }) => {
     );
 
     return (
-        <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", width: isMobile ? "90%" : "100%", backgroundColor: "#f5f5f5" }}>
+        <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", width: "100%", backgroundColor: isDarkMode ? '#020817' : "#f5f5f5", color: isDarkMode ? '#fff' : '#000', }}>
             <CssBaseline />
             {/* Sidebar */}
             {isMobile ? (
                 <>
-                    <Toolbar sx={{ display: "flex", backgroundColor: "#fff", justifyContent: "space-between" }}>
+                    <Toolbar sx={{
+                        display: "flex", backgroundColor: isDarkMode ? "#030c20" : "#fff",
+                        color: isDarkMode ? "#fff" : "#000", justifyContent: "space-between"
+                    }}>
                         <Typography variant="h5"><img
                             style={{ width: "2.5rem", paddingRight: "10px" }}
-                            src="https://media.licdn.com/dms/image/v2/D560BAQGncbvGj9h-YA/company-logo_200_200/company-logo_200_200/0/1700642866542/codeant_ai_logo?e=2147483647&v=beta&t=n7FJ33btckE3cs83Lg38lOnUKRwOKkAyeCv8sE-Nkww"
+                            src="./codeant_ai_logo.jpeg"
                             alt="codeAnt-logo"
-                        />CodeAnt AI</Typography>
+                        />CodeAnt AI
+                            <IconButton
+                                color="inherit"
+                                onClick={toggleTheme}
+                                aria-label="theme togger"
+                                edge="end"
+                            >
+                                {isDarkMode ? <WbSunnyOutlinedIcon /> : <WbSunnyIcon />}
+                            </IconButton>
+                        </Typography>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -239,6 +265,8 @@ const Dashboard = ({ user, accessToken }) => {
                                 width: "100%",
                                 height: "auto",
                                 boxSizing: "border-box",
+                                backgroundColor: isDarkMode ? "#030c20" : "#fff",
+                                color: isDarkMode ? "#fff" : "#000",
                             },
                         }}
                     >
@@ -254,16 +282,26 @@ const Dashboard = ({ user, accessToken }) => {
                         [`& .MuiDrawer-paper`]: {
                             width: drawerWidth,
                             boxSizing: "border-box",
+                            backgroundColor: isDarkMode ? "#030c20" : "#fff",
+                            color: isDarkMode ? "#fff" : "#000",
                         },
                     }}
                 >
                     <Toolbar>
                         <img
                             style={{ width: "2.5rem", paddingRight: "10px" }}
-                            src="https://media.licdn.com/dms/image/v2/D560BAQGncbvGj9h-YA/company-logo_200_200/company-logo_200_200/0/1700642866542/codeant_ai_logo?e=2147483647&v=beta&t=n7FJ33btckE3cs83Lg38lOnUKRwOKkAyeCv8sE-Nkww"
+                            src="./codeant_ai_logo.jpeg"
                             alt="codeAnt-logo"
                         />
                         <Typography variant="h5">CodeAnt AI</Typography>
+                        <IconButton
+                            color="inherit"
+                            onClick={toggleTheme}
+                            aria-label="theme togger"
+                            edge="end"
+                        >
+                            {isDarkMode ? <WbSunnyOutlinedIcon /> : <WbSunnyIcon />}
+                        </IconButton>
                     </Toolbar>
 
                     <Button
@@ -276,8 +314,8 @@ const Dashboard = ({ user, accessToken }) => {
                             borderRadius: 2,
                             margin: "20px",
                             padding: "8px",
-                            borderColor: "#d1d1d1", // Light color for the outline
-                            color: "#000",
+                            borderColor: isDarkMode ? "#1e293b" : "#d1d1d1", // Light color for the outline
+                            color: isDarkMode ? "#fff" : "#000",
                             "&:hover": {
                                 borderColor: "#b0b0b0", // Slightly darker outline on hover
                             },
@@ -304,7 +342,6 @@ const Dashboard = ({ user, accessToken }) => {
                         </MenuItem>
 
                     </Menu>
-
                     <Box sx={{ overflow: "auto" }}>
                         <List sx={{
                             ml: "15px", mr: "15px"
@@ -445,7 +482,8 @@ const Dashboard = ({ user, accessToken }) => {
                     width: "100%",
                     bgcolor: "background.paper",
                     padding: "20px",
-                    backgroundColor: "#fff",
+                    backgroundColor: isDarkMode ? '#020817' : '#fff',
+                    color: isDarkMode ? '#fff' : '#000',
                     borderRadius: "8px",
                     boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
                     margin: "20px",
@@ -459,7 +497,8 @@ const Dashboard = ({ user, accessToken }) => {
                     width: "100%",
                     bgcolor: "background.paper",
                     padding: "20px",
-                    backgroundColor: "#fff",
+                    backgroundColor: isDarkMode ? '#020817' : '#fff',
+                    color: isDarkMode ? '#fff' : '#000',
                     borderRadius: "8px",
                     boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
                     margin: "20px",
@@ -473,7 +512,8 @@ const Dashboard = ({ user, accessToken }) => {
                 <Card sx={{
                     width: "100%",
                     bgcolor: "background.paper",
-                    backgroundColor: "#fff",
+                    backgroundColor: isDarkMode ? '#020817' : '#fff',
+                    color: isDarkMode ? '#fff' : '#000',
                     borderRadius: "8px",
                     boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
                     margin: "20px",
@@ -483,6 +523,11 @@ const Dashboard = ({ user, accessToken }) => {
             )}
         </Box>
     );
+};
+
+Dashboard.propTypes ={
+    user: PropTypes.string,
+    accessToken: PropTypes.string,
 };
 
 export default Dashboard;

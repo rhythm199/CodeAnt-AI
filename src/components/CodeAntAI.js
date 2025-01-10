@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button, Card, CssBaseline, Grid, Typography } from "@mui/material";
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import Tabs from "@mui/joy/Tabs";
 import Tab, { tabClasses } from "@mui/joy/Tab";
@@ -97,7 +98,7 @@ const CodeAntAI = ({ handleLogin }) => {
             <Typography variant="h5" className={classes.welcometexts}>
               <img
                 style={{ width: "2.0rem" }}
-                src="https://media.licdn.com/dms/image/v2/D560BAQGncbvGj9h-YA/company-logo_200_200/company-logo_200_200/0/1700642866542/codeant_ai_logo?e=2147483647&v=beta&t=n7FJ33btckE3cs83Lg38lOnUKRwOKkAyeCv8sE-Nkww"
+                src="./codeant_ai_logo.jpeg"
                 alt="codeAnt-logo"
               />
               CodeAnt AI
@@ -298,6 +299,10 @@ const CodeAntAI = ({ handleLogin }) => {
       </Grid>
     </Box >
   );
+};
+
+CodeAntAI.propTypes ={
+  handleLogin: PropTypes.func.isRequired,
 };
 
 export default CodeAntAI;
